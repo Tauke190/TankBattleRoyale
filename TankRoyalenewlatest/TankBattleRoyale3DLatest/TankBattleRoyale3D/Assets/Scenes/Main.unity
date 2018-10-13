@@ -478,6 +478,11 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 114305873829862538, guid: 31fcd10a872dfd449b7b1d686e135242,
+        type: 2}
+      propertyPath: MovementRange
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31fcd10a872dfd449b7b1d686e135242, type: 2}
   m_IsPrefabAsset: 0
