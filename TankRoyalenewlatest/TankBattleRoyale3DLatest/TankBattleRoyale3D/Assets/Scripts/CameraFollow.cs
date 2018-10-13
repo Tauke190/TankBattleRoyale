@@ -8,20 +8,14 @@ public class CameraFollow : MonoBehaviour {
 	public float smoothSpeed = 10f;
 	public Vector3 offset;
 
-	public void SelectPlayer(Transform playerTransform){
-		tank = playerTransform;
-		transform.position = tank.position + offset;
-	}
-
 	void FixedUpdate () 
 	{
-		/*if (!isPlayerSpawned)
-			return;*/
-
 		if (GameObject.FindObjectOfType<TankController> () == null)
 			return;
-		/*if (tank == null)
-			tank = GameObject.FindObjectOfType<TankController> ().transform;*/
+		if (tank == null) {
+			tank = GameObject.FindObjectOfType<TankController> ().transform;
+			transform.position = tank.position + offset;
+		}
 
 		MoveCamera ();
 	}

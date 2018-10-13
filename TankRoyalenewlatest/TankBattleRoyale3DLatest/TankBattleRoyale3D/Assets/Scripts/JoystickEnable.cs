@@ -6,11 +6,10 @@ public class JoystickEnable : MonoBehaviour {
 
 	public GameObject joystick;
 
-	void Start () {
-		joystick.SetActive (false);
-	}
-
-	public void setTrue(){
-		joystick.SetActive (true);
+	void Update(){
+		if (GameObject.FindObjectOfType<TankController> () == null)
+			joystick.SetActive (false);
+		else
+			joystick.SetActive (true);
 	}
 }

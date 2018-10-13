@@ -36,7 +36,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4928777487393814}
-  - component: {fileID: 114460481833085086}
   - component: {fileID: 54592744672948416}
   - component: {fileID: 136019570921773404}
   - component: {fileID: 114653659581976096}
@@ -131,18 +130,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &114460481833085086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1533959217599518}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df093a4fa96b3547ad0e37f7e50cbcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletSpeed: 100
 --- !u!114 &114653659581976096
 MonoBehaviour:
   m_ObjectHideFlags: 1

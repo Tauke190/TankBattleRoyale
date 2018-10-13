@@ -2,32 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-using UnityEngine.Networking;
 
 public enum GameState{
 	Shoot,
 	wait
 }
 
-public class TankController : NetworkBehaviour {
+public class TankController : MonoBehaviour {
 
 	[Range(1,100)]
 	public float speed = 10f;
 	Rigidbody rb;
 	public GameState currentState = GameState.Shoot;
 	public float shootDelay = 1.0f;
-	public Transform nozzle;
-	//public float bulletForce = 5000f;
+	Transform nozzle;
 
-	public Rigidbody Bullet;
 	float x;
 	float y;
 
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
-		GameObject.FindObjectOfType<CameraFollow> ().SelectPlayer (transform);
-		GameObject.FindObjectOfType<JoystickEnable> ().setTrue ();
+		nozzle = GameObject.FindObjectOfType<Scope> ().transform;
 	}
 
 	void Update ()
@@ -37,10 +33,6 @@ public class TankController : NetworkBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (!hasAuthority) {
-			return;
-		}
-
 		MovePlayer ();
 
 		if(Input.GetKeyDown(KeyCode.Space) && currentState == GameState.Shoot){
@@ -63,10 +55,6 @@ public class TankController : NetworkBehaviour {
 	}
 
 	void FireBullet(){
-		/*Rigidbody bulletInstance;
-		bulletInstance = Instantiate (Bullet, nozzle.position, nozzle.rotation) as Rigidbody;
-		bulletInstance.AddForce (nozzle.forward * bulletForce);*/
-
 		AmmoManager.SpawnAmmo (nozzle.position, nozzle.rotation);
 	}
 
