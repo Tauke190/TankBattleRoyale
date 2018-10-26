@@ -8,13 +8,16 @@ public enum GameState{
 	wait
 }
 
+[RequireComponent(typeof(Rigidbody))]
 public class TankController : MonoBehaviour {
 
+	[SerializeField]
 	[Range(1,100)]
-	public float speed = 10f;
+	float speed = 10f;
 	Rigidbody rb;
 	public GameState currentState = GameState.Shoot;
-	public float shootDelay = 1.0f;
+	[SerializeField]
+	float shootDelay = 1.0f;
 	Transform nozzle;
 
 	float x;

@@ -5,8 +5,10 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
 	Transform tank;
-	public float smoothSpeed = 10f;
-	public Vector3 offset;
+	[SerializeField]
+	float smoothSpeed = 10f;
+	[SerializeField]
+	Vector3 offset;
 
 	void FixedUpdate () 
 	{

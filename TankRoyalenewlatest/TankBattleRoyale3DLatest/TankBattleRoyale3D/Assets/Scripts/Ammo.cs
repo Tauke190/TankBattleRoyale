@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Ammo : MonoBehaviour {
 
-	public float bulletForce;
+	[SerializeField]
+	float bulletForce;
 	Rigidbody rb;
 
 	void Awake(){

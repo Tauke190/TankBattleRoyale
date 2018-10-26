@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class Scope : MonoBehaviour {
 
 	LineRenderer lr;
+	[SerializeField]
 	[Range(5,50)]
-	public float scopeRange = 10;
+	float scopeRange = 10;
 
 	Ray shootRay;
 

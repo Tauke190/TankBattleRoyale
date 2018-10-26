@@ -6,7 +6,8 @@ public class AmmoManager : MonoBehaviour {
 
 	public GameObject ammo;
 	GameObject[] ammoArray;
-	public int ammoCount = 100;
+	[SerializeField]
+	int ammoCount = 100;
 	public Queue<Transform> ammoQueue = new Queue<Transform> ();
 	public static AmmoManager AmmoManagerSingleton = null;
 
