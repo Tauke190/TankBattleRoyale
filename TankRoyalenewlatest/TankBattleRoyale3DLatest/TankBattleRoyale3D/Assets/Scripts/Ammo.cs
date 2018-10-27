@@ -6,19 +6,16 @@ using UnityEngine;
 public class Ammo : MonoBehaviour {
 
 	[SerializeField]
-	float bulletForce;
+	[Range(3000,10000)]
+	float bulletForce = 5000f;
 	Rigidbody rb;
 
 	void Awake(){
 		rb = GetComponent<Rigidbody> ();
-	}
-
-	void OnEnable(){
-		Transform noz = GameObject.FindObjectOfType<Scope> ().transform;
-		rb.AddForce (noz.forward * bulletForce);
+		rb.AddForce (transform.forward * bulletForce);
 	}
 		
 	void OnTriggerEnter(Collider col){
-		gameObject.SetActive (false);
+		Destroy (gameObject);
 	}
 }

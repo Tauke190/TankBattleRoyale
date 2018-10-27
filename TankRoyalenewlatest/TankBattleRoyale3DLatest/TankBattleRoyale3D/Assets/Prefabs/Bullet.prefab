@@ -39,13 +39,14 @@ GameObject:
   - component: {fileID: 54592744672948416}
   - component: {fileID: 136019570921773404}
   - component: {fileID: 114653659581976096}
+  - component: {fileID: 114106108896733388}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4320013106082576
 Transform:
   m_ObjectHideFlags: 1
@@ -130,6 +131,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &114106108896733388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533959217599518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 109
+    i1: 32
+    i2: 202
+    i3: 183
+    i4: 113
+    i5: 79
+    i6: 23
+    i7: 4
+    i8: 170
+    i9: 236
+    i10: 57
+    i11: 52
+    i12: 65
+    i13: 255
+    i14: 31
+    i15: 68
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114653659581976096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801e6d0d28735284696a509505f46f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 7500
+  bulletForce: 5000
 --- !u!136 &136019570921773404
 CapsuleCollider:
   m_ObjectHideFlags: 1

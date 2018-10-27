@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Networking;
 
 public enum GameState{
 	Shoot,
@@ -9,7 +10,7 @@ public enum GameState{
 }
 
 [RequireComponent(typeof(Rigidbody))]
-public class TankController : MonoBehaviour {
+public class TankController : NetworkBehaviour {
 
 	[SerializeField]
 	[Range(1,100)]
@@ -19,6 +20,8 @@ public class TankController : MonoBehaviour {
 	[SerializeField]
 	float shootDelay = 1.0f;
 	Transform nozzle;
+
+	public GameObject bullet;
 
 	float x;
 	float y;
@@ -41,6 +44,7 @@ public class TankController : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.Space) && currentState == GameState.Shoot){
 			currentState = GameState.wait;
 			StartCoroutine (ShootCo ());
+			CmdFireBullet ();
 		}
 	}
 
@@ -50,15 +54,16 @@ public class TankController : MonoBehaviour {
 		rb.velocity = movetank;
 		transform.LookAt(rotatetank + transform.position);
 	}
-
+		
 	IEnumerator ShootCo(){
-		FireBullet ();
 		yield return new WaitForSeconds (shootDelay);
 		currentState = GameState.Shoot;
 	}
 
-	void FireBullet(){
-		AmmoManager.SpawnAmmo (nozzle.position, nozzle.rotation);
+	[Command]
+	void CmdFireBullet(){
+		GameObject go = Instantiate (bullet, nozzle.position, nozzle.rotation);
+		NetworkServer.Spawn (go);
 	}
 
 	void OnTriggerEnter(Collider col){
