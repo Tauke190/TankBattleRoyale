@@ -12,6 +12,8 @@ public enum GameState{
 [RequireComponent(typeof(Rigidbody))]
 public class TankController : NetworkBehaviour {
 
+	public Weapon weapon;
+
 	[SerializeField]
 	[Range(1,100)]
 	float speed = 10f;
@@ -70,15 +72,26 @@ public class TankController : NetworkBehaviour {
 		if (col.tag == "2") {
 			CameraFollow cam = GameObject.FindObjectOfType<CameraFollow> ();
 			cam.CameraZoomOut (35);
+			Destroy (col.gameObject);
 		}
 		if (col.tag == "4") {
 			CameraFollow cam = GameObject.FindObjectOfType<CameraFollow> ();
 			cam.CameraZoomOut (40);
+			Destroy (col.gameObject);
 		}
 		if (col.tag == "8") {
 			CameraFollow cam = GameObject.FindObjectOfType<CameraFollow> ();
 			cam.CameraZoomOut (45);
+			Destroy (col.gameObject);
 		}
-		Destroy (col.gameObject);
+		if (col.tag == "Bullet") {
+			CmdPlayerHit (transform.name, weapon.damage);
+		}
+	}
+
+	[Command]
+	void CmdPlayerHit(string _playerID,int _damage){
+		Player _player = GameManager.GetPlayer (_playerID);
+		_player.RpcTakeDamage (_damage);
 	}
 }
