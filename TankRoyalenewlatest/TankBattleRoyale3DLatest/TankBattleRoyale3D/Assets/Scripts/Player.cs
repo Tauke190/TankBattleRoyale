@@ -22,13 +22,28 @@ public class Player : NetworkBehaviour {
 	Behaviour[] disableOnDeath;
 	bool[] wasEnabled;
 
+	bool firstSetup = true;
+
 	public void Setup () {
-		wasEnabled = new bool[disableOnDeath.Length];
-		for (int i = 0; i < wasEnabled.Length; i++)
-			wasEnabled [i] = disableOnDeath [i].enabled;
-		SetDefaults ();
+		CmdBroadcastNewPlayerSetup ();
 	}
 
+	[Command]
+	void CmdBroadcastNewPlayerSetup(){
+		RpcSetupPlayerOAllClients ();	
+	}
+
+	[ClientRpc]
+	void RpcSetupPlayerOAllClients(){
+		if (firstSetup) {
+			wasEnabled = new bool[disableOnDeath.Length];
+			for (int i = 0; i < wasEnabled.Length; i++)
+				wasEnabled [i] = disableOnDeath [i].enabled;
+		}
+		firstSetup = false;
+		SetDefaults ();
+	}
+		
 	[ClientRpc]
 	public void RpcTakeDamage(int _amount){
 		if (isDead)
@@ -53,7 +68,7 @@ public class Player : NetworkBehaviour {
 		Debug.Log (transform.name + " is DEAD!");
 		StartCoroutine (Respawn ());
 	}
-
+		
 	public void SetDefaults(){
 		isDead = false;
 		currentHealth = maxHealth;
@@ -70,10 +85,11 @@ public class Player : NetworkBehaviour {
 
 	IEnumerator Respawn(){
 		yield return new WaitForSeconds (3f);
-		SetDefaults ();
 		Transform spawnPoint = NetworkManager.singleton.GetStartPosition ();
 		transform.position = spawnPoint.position;
 		transform.rotation = spawnPoint.rotation;
+		//yield return new WaitForSeconds (0.1f);
+		Setup ();
 		Debug.Log (transform.name + " has been respawned.");
 	}
 

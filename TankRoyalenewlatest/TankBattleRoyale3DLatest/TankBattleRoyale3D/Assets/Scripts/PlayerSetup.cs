@@ -12,8 +12,9 @@ public class PlayerSetup : NetworkBehaviour {
 			for (int i = 0; i < componentsToDisable.Length; i++) {
 				componentsToDisable [i].enabled = false;
 			}
+		} else {
+			GetComponent<Player> ().Setup ();
 		}
-		GetComponent<Player> ().Setup ();
 	}
 
 	public override void OnStartClient(){
