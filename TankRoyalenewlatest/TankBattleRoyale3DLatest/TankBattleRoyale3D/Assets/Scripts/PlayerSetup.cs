@@ -4,6 +4,9 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(Player))]
 public class PlayerSetup : NetworkBehaviour {
 
+	public GameObject playerUIPrefab;
+	GameObject playerUIInstance;
+
 	[SerializeField]
 	Behaviour[] componentsToDisable;
 
@@ -14,6 +17,8 @@ public class PlayerSetup : NetworkBehaviour {
 			}
 		} else {
 			GetComponent<Player> ().Setup ();
+			playerUIInstance = Instantiate (playerUIPrefab);
+			playerUIInstance.name = playerUIPrefab.name;
 		}
 	}
 
@@ -27,6 +32,7 @@ public class PlayerSetup : NetworkBehaviour {
 	}
 
 	void OnDisable(){
+		Destroy (playerUIInstance);
 		GameManager.UnRegisterPlayer (transform.name);
 	}
 }

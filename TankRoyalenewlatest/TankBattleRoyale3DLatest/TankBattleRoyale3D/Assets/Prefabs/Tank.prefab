@@ -465,6 +465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c9517b989e3a248808a4c9cc6eaf11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUIPrefab: {fileID: 1838290010363728, guid: 129abdc3d1c9c0c4a9c31f8dae95cb19,
+    type: 2}
   componentsToDisable:
   - {fileID: 114329542848455948}
   - {fileID: 114676497362175992}
