@@ -10,12 +10,7 @@ public class PlayerUI : MonoBehaviour {
 		PauseMennu.isOn = false;
 	}
 
-	void Update(){
-		if (Input.GetKeyDown (KeyCode.Escape))
-			TogglePauseMenu ();
-	}
-
-	void TogglePauseMenu(){
+	public void TogglePauseMenu(){
 		Debug.Log ("PauseGame!");
 		pauseMenu.SetActive (!pauseMenu.activeSelf);
 		PauseMennu.isOn = pauseMenu.activeSelf;
