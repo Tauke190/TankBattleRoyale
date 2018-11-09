@@ -31,4 +31,8 @@ public class CameraFollow : MonoBehaviour {
 	public void CameraZoomOut(int yValue){
 		offset.y = yValue;
 	}
+
+	public void Shoot(){
+		GameObject.FindObjectOfType<TankController> ().GetComponent<TankController> ().Fire ();
+	}
 }

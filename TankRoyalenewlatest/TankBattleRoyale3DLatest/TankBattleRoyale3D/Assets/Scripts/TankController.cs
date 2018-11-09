@@ -42,12 +42,12 @@ public class TankController : NetworkBehaviour {
 
 	void FixedUpdate() {
 		MovePlayer ();
+	}
 
-		if(Input.GetKeyDown(KeyCode.Space) && currentState == GameState.Shoot){
-			currentState = GameState.wait;
-			StartCoroutine (ShootCo ());
-			CmdFireBullet ();
-		}
+	public void Fire(){
+		//currentState = GameState.wait;
+		//StartCoroutine (ShootCo ());
+		CmdFireBullet ();
 	}
 
 	void MovePlayer(){
